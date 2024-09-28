@@ -29,7 +29,11 @@ python monitor.py
 
 ################### Configure it if you want, but please don't touch the battery marker or you'll be defeating the purrrpose nyaa!
 
-Icon Paths: Update the icon_path variable in the code to customize notification icons. Threshold Values: Modify the threshold values for battery, CPU, memory, and disk usage in the code. Alert Schedule: Adjust the alert intervals by modifying the alert_schedule list in the code.
+Icon Paths: Update the icon_path variable in the code to customize notification icons. 
+
+Threshold Values: Modify the threshold values for battery, CPU, memory, and disk usage in the code. 
+
+Alert Schedule: Adjust the alert intervals by modifying the alert_schedule list in the code.
 
 ################### Usage
 
