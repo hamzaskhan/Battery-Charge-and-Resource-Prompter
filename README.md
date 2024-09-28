@@ -1,6 +1,8 @@
 # Battery-Charge-and-Resource-Prompter
 Overcharging a battery beyond 80% can hurt its lifespan, and it's easy to forget to unplug while busy. This program provides timely reminders when the battery reaches this threshold. It also monitors CPU usage, memory consumption, and disk storage, ensuring optimal performance and alerting users to any potential issues.
 
+It's a good idea to convert it into a .exe file and use it like any other application ;)
+
 ################### Features
 
 Battery Monitoring Real-time Battery Status: Monitors battery percentage and charging status continuously. Alerts for High Battery Levels: Notifies users when the battery exceeds 80% while charging, suggesting they unplug the charger to protect battery health.
