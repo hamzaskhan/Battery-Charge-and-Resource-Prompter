@@ -1,42 +1,47 @@
 import logging
 import os
-from plyer import notification
+from win10toast_click import ToastNotifier
 
-# Set up logging configuration
+# Configure logging to write to 'monitor.log' file with timestamped entries
 logging.basicConfig(filename='monitor.log', level=logging.INFO, format='%(asctime)s - %(message)s')
 
-def send_modern_notification(title, message, category, icon_path=None):
+# Initialize the Windows toast notification system
+toaster = ToastNotifier()
+
+def send_modern_notification(title, message, category, icon_path=None, callback=None):
     """
-    Send a system notification using plyer.
+    Display a system notification with an optional icon and callback.
     
     Args:
-        title (str): The title of the notification.
-        message (str): The body text of the notification.
-        category (str): A category identifier for the notification.
-        icon_path (str, optional): Path to the icon image.
+        title (str): Title of the notification.
+        message (str): Body content of the notification.
+        category (str): Category for logging purposes.
+        icon_path (str, optional): Path to an icon file (optional).
+        callback (function, optional): A function to be executed when the notification is clicked (optional).
     """
     try:
-        # Check if the icon path is valid
+        # Check if the icon file exists if an icon path is provided
         if icon_path and not os.path.exists(icon_path):
             raise FileNotFoundError(f"Icon file not found: {icon_path}")
         
-        notification.notify(
+        # Display the notification with optional callback on click
+        toaster.show_toast(
             title=title,
-            message=message,
-            app_name='System Monitor',
-            app_icon=icon_path,  # Use icon if provided
-            timeout=10  # Notification will disappear after 10 seconds
+            msg=message,
+            icon_path=icon_path,
+            duration=10,  # Duration in seconds the notification stays visible
+            threaded=True  # Ensures the notification runs in a non-blocking manner
         )
         log_event(f"Notification sent: [{category}] {title} - {message}")
     except Exception as e:
         log_event(f"Failed to send notification: {str(e)}")
-        print(f"Error: {str(e)}")  # Print the error for feedback
+        print(f"Error: {str(e)}")  # Print error for immediate feedback during execution
 
 def log_event(message):
     """
-    Log an event to a file with a timestamp.
+    Log a message to the log file.
     
     Args:
-        message (str): The message to log.
+        message (str): Message to log with a timestamp.
     """
     logging.info(message)
