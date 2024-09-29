@@ -73,17 +73,17 @@ async def monitor_resources():
 
     # Check CPU usage
     if cpu_usage > CPU_THRESHOLD:
-        send_notification_async('High CPU Usage', f'CPU usage is at {cpu_usage}%', "cpu", icon_path="path_to_cpu_icon.png")
+        send_notification_async('High CPU Usage', f'CPU usage is at {cpu_usage}%', "cpu", icon_path="icon.ico")
         log_event(f"Notification sent for CPU Usage: {cpu_usage}%")
 
     # Check memory usage
     if memory_info.percent > MEMORY_THRESHOLD:
-        send_notification_async('High Memory Usage', f'Memory usage is at {memory_info.percent}%', "memory", icon_path="path_to_memory_icon.png")
+        send_notification_async('High Memory Usage', f'Memory usage is at {memory_info.percent}%', "memory", icon_path="icon.ico")
         log_event(f"Notification sent for Memory Usage: {memory_info.percent}%")
 
     # Check disk usage
     if disk_usage.percent > DISK_THRESHOLD:
-        send_notification_async('High Disk Usage', f'Disk usage is at {disk_usage.percent}%', "disk", icon_path="path_to_disk_icon.png")
+        send_notification_async('High Disk Usage', f'Disk usage is at {disk_usage.percent}%', "disk", icon_path="icon.ico")
         log_event(f"Notification sent for Disk Usage: {disk_usage.percent}%")
 
     return cpu_usage, memory_info.percent
